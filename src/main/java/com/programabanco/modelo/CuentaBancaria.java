@@ -12,8 +12,8 @@ public abstract class  CuentaBancaria {
     @Getter @Setter boolean hackeable;
 
     //Constructor
-    public CuentaBancaria() {
-    }
+//    public CuentaBancaria() {
+//    }
 
     /*Constructor pensado para automatizar la creacion de cuentas con numeros autoasignados
     public CuentaBancaria(boolean habilitacion, String titular) {
