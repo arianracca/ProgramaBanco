@@ -1,23 +1,32 @@
 package com.programabanco.modelo;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 public abstract class  CuentaBancaria {
-    @Getter @Setter
-    boolean habilitacion;
-    @Getter @Setter
-    Long nroCuenta = null;
-    @Getter @Setter
-    String titular = "";
-    @Getter @Setter
-    Double saldo = null;
+    @Getter @Setter boolean habilitacion;
+    @Getter @Setter Long nroCuenta;
+    @Getter @Setter String titular;
+    @Getter @Setter Double saldo;
+    @Getter @Setter boolean hackeable;
 
     //Constructor
     public CuentaBancaria() {
     }
+
+    /*Constructor pensado para automatizar la creacion de cuentas con numeros autoasignados
+    public CuentaBancaria(boolean habilitacion, String titular) {
+        this.habilitacion = habilitacion;
+        // this.nroCuenta = nroCuenta; TODO SERIAL NUMBER
+        this.titular = titular;
+    }
+    */
+
+
+
     //Métodos de la clase abstracta
-    public void retirar(Long nroCuenta, Double saldo, Double monto) {
+    public void retirar(Double saldo, Double monto) {
         if(isHabilitacion()) {
             if(monto <= getSaldo()) {
                 setSaldo(saldo-monto);
@@ -32,7 +41,7 @@ public abstract class  CuentaBancaria {
         }
     }
 
-    public void transferir(Long nroCuenta, Double saldo, double monto, CuentaBancaria cuentaDestino) {
+    public void transferir(Double saldo, double monto, CuentaBancaria cuentaDestino) {
         if (isHabilitacion()) {
             if (monto <= getSaldo()) {
                 setSaldo(saldo - monto);
@@ -48,7 +57,6 @@ public abstract class  CuentaBancaria {
         }
     }
 
-
     public void depositar(Long nroCuenta, Double saldo, Double monto) {
         if (isHabilitacion()) {
             //Double deposito = monto - getSaldoDescubierto(); //Override para Cuenta Crriente
@@ -59,7 +67,6 @@ public abstract class  CuentaBancaria {
             System.out.println("Su cuenta no se encuentra habilitada.");
         }
     }
-
 
     public void consultarSaldo() {
         System.out.println("Su saldo es de $" +getSaldo());

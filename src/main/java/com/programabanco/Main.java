@@ -1,6 +1,7 @@
 package com.programabanco;
 
 import com.programabanco.modelo.CajaAhorro;
+import com.programabanco.modelo.CuentaBancaria;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,10 +12,12 @@ public class Main {
         System.out.println(cajaAhorro);
         cajaAhorro.setSaldo(cajaAhorro.getSaldo()+200);
         System.out.println(cajaAhorro.getSaldo());
-        cajaAhorro.retirar(cajaAhorro.getNroCuenta(), cajaAhorro.getSaldo(), 5000.0);
+        cajaAhorro.retirar(cajaAhorro.getSaldo(), 5000.0);
         System.out.println(cajaAhorro.getSaldo());
-        cajaAhorro.transferir(cajaAhorro.getNroCuenta(), cajaAhorro.getSaldo(), 1500.0D, cajaAhorro2);
+        cajaAhorro.transferir(cajaAhorro.getSaldo(), 1500.0, cajaAhorro2);
         cajaAhorro2.consultarSaldo();
+        System.out.println(cajaAhorro2);
+        cajaAhorro2.depositar(cajaAhorro2.getNroCuenta(), cajaAhorro2.getSaldo(), 4500.0);
 
     }
 }
