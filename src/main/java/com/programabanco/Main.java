@@ -1,23 +1,30 @@
 package com.programabanco;
 
 import com.programabanco.modelo.CajaAhorro;
-import com.programabanco.modelo.CuentaBancaria;
+import com.programabanco.modelo.CuentaCorriente;
 
 public class Main {
     public static void main(String[] args) {
 
-        CajaAhorro cajaAhorro = new CajaAhorro(true, 150205L, "Arian", 12500D);
-        CajaAhorro cajaAhorro2 = new CajaAhorro(true, 120555L, "Manu", 8000D);
+        CajaAhorro cajaAhorro1 = new CajaAhorro(true, 555555L, "Arian", 1000D);
+        CajaAhorro cajaAhorro2 = new CajaAhorro(true, 888888L, "Manu", 5000D);
 
-        System.out.println(cajaAhorro);
-        cajaAhorro.setSaldo(cajaAhorro.getSaldo()+200);
-        System.out.println(cajaAhorro.getSaldo());
-        cajaAhorro.retirar(cajaAhorro.getSaldo(), 5000.0);
-        System.out.println(cajaAhorro.getSaldo());
-        cajaAhorro.transferir(cajaAhorro.getSaldo(), 1500.0, cajaAhorro2);
-        cajaAhorro2.consultarSaldo();
+        CuentaCorriente cuenta1 = new CuentaCorriente(true, 1122L, "OLDBAYLEY", 2000D, 1000D);
+        CuentaCorriente cuenta2 = new CuentaCorriente(true, 2233L, "NEWHAVEN", 2000D, 2000D);
+
+        System.out.println(cajaAhorro1);
         System.out.println(cajaAhorro2);
-        cajaAhorro2.depositar(cajaAhorro2.getNroCuenta(), cajaAhorro2.getSaldo(), 4500.0);
+        System.out.println(cuenta1);
+        System.out.println(cuenta2);
+
+        cajaAhorro1.retirar(500.0);
+        cajaAhorro2.depositar(1500.0);
+        cajaAhorro1.transferir(2000.0, cajaAhorro2);
+        cajaAhorro2.transferir(1000.0, cuenta2);
+
+        cuenta1.retirar(2700.0);
+        cuenta2.transferir(1000.0, cajaAhorro1);
+
 
     }
 }

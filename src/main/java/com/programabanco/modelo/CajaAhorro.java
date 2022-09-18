@@ -1,27 +1,19 @@
 package com.programabanco.modelo;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-@AllArgsConstructor //Constructor con todos los prámetros
 public class CajaAhorro extends CuentaBancaria {
-    @Getter @Setter boolean habilitacion;
-    @Getter @Setter Long nroCuenta;
-    @Getter @Setter String titular;
-    @Getter @Setter Double saldo;
+    @Getter @Setter private boolean habilitada;
+    @Getter @Setter private Long nroCuenta;
+    @Getter @Setter private String titular;
+    @Getter @Setter private Double saldo;
+    @Getter private final String tipoCuenta = "Caja de Ahorro";
 
-
-    //Métodos de la clase
-    public String toString() {
-        StringBuilder infoCuenta = new StringBuilder();
-        infoCuenta.append("\nNúmero de cuenta: " + nroCuenta+
-                "\nTitular: " + titular+
-                "\nEstado de habilitación: " + habilitacion+
-                "\nSaldo: " + saldo+
-                "\n------------------------------------------------");
-        return infoCuenta.toString();
+    public CajaAhorro(boolean habilitada, Long nroCuenta, String titular, Double saldo) {
+        this.habilitada = habilitada;
+        this.nroCuenta = nroCuenta;
+        this.titular = titular;
+        this.saldo = saldo;
     }
-
-
 }
