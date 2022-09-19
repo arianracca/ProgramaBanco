@@ -1,10 +1,9 @@
 package com.programabanco.modelo;
 
-import lombok.RequiredArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class CuentaCorriente extends CuentaBancaria {
     @Getter @Setter private boolean habilitada;
     @Getter @Setter private Long nroCuenta;
@@ -77,6 +76,7 @@ public class CuentaCorriente extends CuentaBancaria {
             if (monto >= getSaldoDescubierto()) {
                 Double montoFinal = monto - getSaldoDescubierto();
                 setSaldo(getSaldo() + montoFinal);
+                setSaldoDescubierto(0.0);
                 setDescubiertoDisponible(getDescubiertoAsignado() - getSaldoDescubierto()); /** Actualiza el descubierto disponible */
                 System.out.println("Ha depositado exitosamente $" + monto +
                         "\nSu saldo actual es de $" + getSaldo() +

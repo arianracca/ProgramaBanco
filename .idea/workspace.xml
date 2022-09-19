@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5752fc2e-28ff-464e-8c5c-3910e966e05c" name="Changes" comment="Primera version. finalizada CuentaBancaria y CajaAhorro">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CuentaCorriente.java" afterDir="false" />
+    <list default="true" id="5752fc2e-28ff-464e-8c5c-3910e966e05c" name="Changes" comment="Segunda version. finalizada CuentaBancaria y CajaAhorro funcionando. Sobreescritura de metodos en CuentaBancaria">
+      <change afterPath="$PROJECT_DIR$/src/test/java/TestCuenta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/programabanco/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programabanco/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CajaAhorro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CajaAhorro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CuentaBancaria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CuentaBancaria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CuentaCorriente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CuentaCorriente.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +49,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers": "true",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
@@ -61,6 +62,67 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.programabanco.modelo" />
     </key>
+  </component>
+  <component name="RunManager" selected="JUnit.CajaAhorroTest.test_transferir_dinero_cuenta_corriente_a_caja_ahorro_mismo_titular">
+    <configuration name="CajaAhorroTest.test_transferir_dinero_caja_ahorro_a_cuenta_corriente_distinto_titular" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProgramaBanco" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CajaAhorroTest" />
+      <option name="METHOD_NAME" value="test_transferir_dinero_caja_ahorro_a_cuenta_corriente_distinto_titular" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CajaAhorroTest.test_transferir_dinero_caja_ahorro_a_cuenta_corriente_mismo_titular" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProgramaBanco" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CajaAhorroTest" />
+      <option name="METHOD_NAME" value="test_transferir_dinero_caja_ahorro_a_cuenta_corriente_mismo_titular" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CajaAhorroTest.test_transferir_dinero_cuenta_corriente_a_caja_ahorro_distinto_titular" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProgramaBanco" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CajaAhorroTest" />
+      <option name="METHOD_NAME" value="test_transferir_dinero_cuenta_corriente_a_caja_ahorro_distinto_titular" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CajaAhorroTest.test_transferir_dinero_cuenta_corriente_a_caja_ahorro_mismo_titular" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProgramaBanco" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CajaAhorroTest" />
+      <option name="METHOD_NAME" value="test_transferir_dinero_cuenta_corriente_a_caja_ahorro_mismo_titular" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CajaAhorroTest.test_transferir_dinero_cuenta_corriente_destino_inhabilitada" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProgramaBanco" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CajaAhorroTest" />
+      <option name="METHOD_NAME" value="test_transferir_dinero_cuenta_corriente_destino_inhabilitada" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.CajaAhorroTest.test_transferir_dinero_cuenta_corriente_a_caja_ahorro_mismo_titular" />
+        <item itemvalue="JUnit.CajaAhorroTest.test_transferir_dinero_cuenta_corriente_a_caja_ahorro_distinto_titular" />
+        <item itemvalue="JUnit.CajaAhorroTest.test_transferir_dinero_caja_ahorro_a_cuenta_corriente_distinto_titular" />
+        <item itemvalue="JUnit.CajaAhorroTest.test_transferir_dinero_caja_ahorro_a_cuenta_corriente_mismo_titular" />
+        <item itemvalue="JUnit.CajaAhorroTest.test_transferir_dinero_cuenta_corriente_destino_inhabilitada" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -92,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663452324512</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Segunda version. finalizada CuentaBancaria y CajaAhorro funcionando. Sobreescritura de metodos en CuentaBancaria">
+      <created>1663520147943</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1663520147943</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -108,7 +177,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Primera version. finalizada CuentaBancaria y CajaAhorro" />
-    <option name="LAST_COMMIT_MESSAGE" value="Primera version. finalizada CuentaBancaria y CajaAhorro" />
+    <MESSAGE value="Segunda version. finalizada CuentaBancaria y CajaAhorro funcionando. Sobreescritura de metodos en CuentaBancaria" />
+    <option name="LAST_COMMIT_MESSAGE" value="Segunda version. finalizada CuentaBancaria y CajaAhorro funcionando. Sobreescritura de metodos en CuentaBancaria" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
