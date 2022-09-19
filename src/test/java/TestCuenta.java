@@ -5,7 +5,7 @@ import com.programabanco.modelo.CuentaCorriente;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class CajaAhorroTest {
+class MetodosCuentasTest {
 
     CajaAhorro cajaAhorro1 = new CajaAhorro(true, 555555L, "Arian", 1000.0);
     CajaAhorro cajaAhorro2 = new CajaAhorro(true, 888888L, "Manu", 2000.0);
@@ -15,6 +15,11 @@ class CajaAhorroTest {
     CuentaCorriente cuentaCorriente2 = new CuentaCorriente(true, 2233L, "NEWHAVEN", 2000.0, 2000.0);
     CuentaCorriente cuentaCorriente3 = new CuentaCorriente(false, 5566L, "GROWDAY", 3000.0, 3000.0);
     CuentaCorriente cuentaCorriente4 = new CuentaCorriente(true, 8899L, "Arian", 4000.0, 4000.0);
+
+
+
+
+
 
     /** TESTS CON CAJAS DE AHORRO */
     /** TESTS RETIRAR DINERO */

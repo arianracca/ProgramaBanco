@@ -3,35 +3,45 @@ package com.programabanco.modelo;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Clase Abstracta CuentaBancaria
+ * contiene la mayoría de atributos y métodos que serán heredados por las clases
+ * CajaAhorro y CuentaCorriente
+ */
 public abstract class  CuentaBancaria {
+
+    /**
+     * Atributos de la clase abstracta
+     */
     @Getter
     @Setter
-    boolean habilitada;
+    protected boolean habilitada;
     @Getter
     @Setter
-    Long nroCuenta;
+    protected Long nroCuenta;
     @Getter
     @Setter
-    String titular;
+    protected String titular;
     @Getter
     @Setter
-    Double saldo;
+    protected Double saldo;
     @Getter
-    boolean hackeable;
-    @Getter String tipoCuenta = "";
+    protected boolean hackeable;
+    @Getter protected String tipoCuenta;
+
 
 
     /*Constructor pensado para automatizar la creacion de cuentas con numeros autoasignados
     public CuentaBancaria(String titular) {
         this.habilitacion = true;
-        // this.nroCuenta = nroCuenta; TODO SERIAL NUMBER
+        this.nroCuenta = nroCuenta; TODO SERIAL NUMBER
         this.titular = titular;
     }
     */
 
 
-    /**Métodos de la clase abstracta */
-    public void retirar(Double monto) {
+    /** Métodos de la clase abstracta */
+    public synchronized void retirar(Double monto) {
         if (isHabilitada())
             if (monto <= getSaldo()) {
                 setSaldo(getSaldo() - monto);
@@ -49,9 +59,7 @@ public abstract class  CuentaBancaria {
 }
 
     /** Métodoa para transferir */
-    public void transferir(Double monto, CuentaBancaria cuentaDestino) {
-
-
+    public  synchronized void transferir(Double monto, CuentaBancaria cuentaDestino) {
 
         /** Chequea si la cuenta de ORIGEN está habilitada */
         if (isHabilitada()) {
@@ -59,7 +67,7 @@ public abstract class  CuentaBancaria {
             /** Chequea si la cuenta de DESTINO está habilitada */
             if (cuentaDestino.isHabilitada()) {
 
-                /** Las cuentas de ORIGEN y DESTINO son de distinto tipo y titular: transferencia con cargoAdicional */
+                /** Las cuentas de ORIGEN y DESTINO son de distinto tipo y titular: transferencia con cargo adicional */
                 if (!getClass().equals(cuentaDestino.getClass()) && !getTitular().equals(cuentaDestino.getTitular())) {
 
                     /** Calculo de cargoAdicional según la clase: CajaAhorro o CuentaCorriente */
@@ -69,7 +77,7 @@ public abstract class  CuentaBancaria {
                     } else {
                         cargoAdicional = monto*0.03;
                     }
-
+                    /** Opera la transferencia con cargo adicional */
                     if (monto <= getSaldo()) {
                         setSaldo(getSaldo() - (monto + cargoAdicional));
                         cuentaDestino.setSaldo(cuentaDestino.getSaldo() + monto);
@@ -79,13 +87,15 @@ public abstract class  CuentaBancaria {
                                 "\nSe ha cobrado un cargo adicional de: $" + cargoAdicional +
                                 "\nSu saldo actual es de $" + getSaldo() +
                                 "\n------------------------------------------------");
+
+                    /** El saldo no es suficiente para realizar la transferencia */
                     } else {
-                        System.out.println("El monto que desea retirar es mayor al disponible" +
+                        System.out.println("El monto que desea transferir es mayor al disponible" +
                                 "\nSu saldo actual es de $" + getSaldo() +
                                 "\n------------------------------------------------");
                     }
 
-                    /** Las cuentas de ORIGEN y DESTINO son de distinto tipo y titular: transferencia sin cargoAdicional */
+                    /** Las cuentas de ORIGEN y DESTINO son de distinto tipo y titular: transferencia sin cargo adicional */
                 } else {
 
                     /** Chequea si hay saldo suficiente */
@@ -96,7 +106,7 @@ public abstract class  CuentaBancaria {
                                 "\nSu saldo actual es de $" + getSaldo() +
                                 "\n------------------------------------------------");
 
-                        /** El saldo no es suficiente */
+                        /** El saldo no es suficiente para realizar la transferencia */
                     } else {
                         System.out.println("El monto que desea transferir es mayor al disponible" +
                                 "\nSu saldo actual es de $" + getSaldo() +
@@ -115,8 +125,9 @@ public abstract class  CuentaBancaria {
                     "\n------------------------------------------------");
         }
     }
+
     /** Método para depositar */
-    public void depositar(Double monto) {
+    public synchronized void depositar(Double monto) {
         if (isHabilitada()) {
             setSaldo(getSaldo() + monto);
             System.out.println("Ha depositado exitosamente $" + monto + "" +
@@ -128,7 +139,7 @@ public abstract class  CuentaBancaria {
         }
     }
     /** Método de Consultar el Saldo */
-    public void consultarSaldo() {
+    public synchronized void consultarSaldo() {
         System.out.println("Su saldo es de $" + getSaldo() +
                 "\n------------------------------------------------");
     }
@@ -146,7 +157,7 @@ public abstract class  CuentaBancaria {
     }
 
     /** Método a implementar para ver si existen cuentas hackeables en la base de datos*/
-    public boolean chequeoHackeable() {
+    public synchronized boolean chequeoHackeable() {
         if(getNroCuenta() % 2 == 0) {
             if(getTitular().length() > 15) {
                 if(getSaldo() > 50000)
@@ -156,6 +167,14 @@ public abstract class  CuentaBancaria {
             hackeable = false;
         }
         return hackeable;
+    }
+
+    /** Metodo para ver si el saldo se adecua al prestamo */
+    public abstract boolean saldoPrestamoSuficiente();
+
+    /** Metodo obtener los TITULARES en mayusculas */
+    public void titularMayusculas() {
+        System.out.println(); getTitular().toUpperCase();
     }
 
 

@@ -4,10 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class CajaAhorro extends CuentaBancaria {
-    @Getter @Setter private boolean habilitada;
-    @Getter @Setter private Long nroCuenta;
-    @Getter @Setter private String titular;
-    @Getter @Setter private Double saldo;
+
     @Getter private final String tipoCuenta = "Caja de Ahorro";
 
     public CajaAhorro(boolean habilitada, Long nroCuenta, String titular, Double saldo) {
@@ -17,5 +14,15 @@ public class CajaAhorro extends CuentaBancaria {
         this.saldo = saldo;
     }
 
+    @Override /** Metodo para ver si el saldo se adecua al prestamo */
+    public boolean saldoPrestamoSuficiente() {
+        boolean saldoPrestamoSuficiente;
+        if (isHabilitada() && getSaldo() >= 10000.0){
+            saldoPrestamoSuficiente = true;
+        } else{
+            saldoPrestamoSuficiente = false;
+        }
+        return saldoPrestamoSuficiente;
+    }
 
 }

@@ -3,12 +3,8 @@ package com.programabanco.modelo;
 import lombok.Getter;
 import lombok.Setter;
 
-//@RequiredArgsConstructor
 public class CuentaCorriente extends CuentaBancaria {
-    @Getter @Setter private boolean habilitada;
-    @Getter @Setter private Long nroCuenta;
-    @Getter @Setter private String titular;
-    @Getter @Setter private Double saldo;
+
     @Getter @Setter private Double descubiertoAsignado;
     @Getter @Setter private Double saldoDescubierto = 0.0;
     @Getter @Setter private Double descubiertoDisponible;
@@ -24,8 +20,14 @@ public class CuentaCorriente extends CuentaBancaria {
         this.descubiertoDisponible = descubiertoAsignado;
     }
 
+    public CuentaCorriente(boolean habilitada, Long nroCuenta, String titular, Double saldo, Double descubiertoAsignado, Double saldoDescubierto, Double descubiertoDisponible) {
+        this(habilitada, nroCuenta, titular, saldo, descubiertoAsignado);
+        this.saldoDescubierto = saldoDescubierto;
+        this.descubiertoDisponible = descubiertoDisponible;
+    }
+
     @Override
-    public void retirar(Double monto) {
+    public synchronized void retirar(Double monto) {
         Double saldoTotal = getSaldo() + getDescubiertoDisponible();
 
         /** Chequea si la cuenta está habilitada */
@@ -69,7 +71,7 @@ public class CuentaCorriente extends CuentaBancaria {
     }
 
     @Override
-    public void depositar(Double monto) {
+    public synchronized void depositar(Double monto) {
         /** Chequea si la cuenta está habilitada */
         if (isHabilitada()) {
             /** Chequea si el monto llega a cubrir el saldo en descubierto */
@@ -111,4 +113,18 @@ public class CuentaCorriente extends CuentaBancaria {
                 "\n------------------------------------------------");
         return infoCuenta.toString();
     }
+
+    @Override /** Metodo para ver si el saldo se adecua al prestamo */
+    public boolean saldoPrestamoSuficiente() {
+        boolean saldoPrestamoSuficiente;
+        if (isHabilitada() && getSaldo() + getDescubiertoDisponible() >= 10000) {
+            saldoPrestamoSuficiente = true;
+        } else {
+            saldoPrestamoSuficiente = false;
+        }
+        return saldoPrestamoSuficiente;
+    }
+
+
+
 }
