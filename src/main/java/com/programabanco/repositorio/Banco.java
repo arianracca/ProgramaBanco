@@ -15,4 +15,16 @@ public class Banco {
         cuentasBancariasAptasParaPrestamo
                 .forEach(cuentaBancaria -> System.out.println(cuentaBancaria.getTitular().toUpperCase()));  /** Imprime lista de titulares con letras en Mayúsculas */
     }
+
+    /** Método a implementar para ver si existen cuentas hackeables en la base de datos*/
+    public synchronized boolean chequeoHackeable(List<CuentaBancaria> cuentasBancarias) {
+        List<CuentaBancaria> cuentasHackeables = cuentasBancarias.stream()
+                .filter(cuentaBancaria -> cuentaBancaria.getNroCuenta() %2 == 0  /**  */
+                        && cuentaBancaria.getTitular().length() > 15
+                        && cuentaBancaria.getSaldo() > 50000)
+                .collect(Collectors.toList());
+
+        return cuentasHackeables.size() > 0;
+    }
+
 }

@@ -156,18 +156,6 @@ public abstract class  CuentaBancaria {
         return infoCuenta.toString();
     }
 
-    /** Método a implementar para ver si existen cuentas hackeables en la base de datos*/
-    public synchronized boolean chequeoHackeable() {
-        if(getNroCuenta() % 2 == 0) {
-            if(getTitular().length() > 15) {
-                if(getSaldo() > 50000)
-                    hackeable = true;
-            }
-        } else {
-            hackeable = false;
-        }
-        return hackeable;
-    }
 
     /** Metodo para ver si el saldo se adecua al prestamo */
     public abstract boolean saldoPrestamoSuficiente();

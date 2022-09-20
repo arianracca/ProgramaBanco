@@ -124,7 +124,4 @@ public class CuentaCorriente extends CuentaBancaria {
         }
         return saldoPrestamoSuficiente;
     }
-
-
-
 }

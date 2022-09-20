@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5752fc2e-28ff-464e-8c5c-3910e966e05c" name="Changes" comment="ARCHIVO DE TESTEO AÑADIDO CON TODOS LOS METODOS Y CASUISTICA.">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/Banco.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/programabanco/repositorio/ListaCuentas.java" afterDir="false" />
+    <list default="true" id="5752fc2e-28ff-464e-8c5c-3910e966e05c" name="Changes" comment="IMPRESION DE LISTAS APTOS PRESTAMOS BETA">
       <change afterPath="$PROJECT_DIR$/src/main/resources/cuentas.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/programabanco/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programabanco/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CajaAhorro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CajaAhorro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CuentaBancaria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CuentaBancaria.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CuentaCorriente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CuentaCorriente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/programabanco/repositorio/Banco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programabanco/repositorio/Banco.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TestCuenta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestCuenta.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +63,7 @@
       <recent name="com.programabanco.modelo" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MetodosCuentasTest">
+  <component name="RunManager">
     <configuration name="MetodosCuentasTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProgramaBanco" />
       <option name="PACKAGE_NAME" value="" />
@@ -171,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663547001144</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="IMPRESION DE LISTAS APTOS PRESTAMOS BETA">
+      <created>1663630169458</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1663630169458</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -189,7 +192,8 @@
     <MESSAGE value="Primera version. finalizada CuentaBancaria y CajaAhorro" />
     <MESSAGE value="Segunda version. finalizada CuentaBancaria y CajaAhorro funcionando. Sobreescritura de metodos en CuentaBancaria" />
     <MESSAGE value="ARCHIVO DE TESTEO AÑADIDO CON TODOS LOS METODOS Y CASUISTICA." />
-    <option name="LAST_COMMIT_MESSAGE" value="ARCHIVO DE TESTEO AÑADIDO CON TODOS LOS METODOS Y CASUISTICA." />
+    <MESSAGE value="IMPRESION DE LISTAS APTOS PRESTAMOS BETA" />
+    <option name="LAST_COMMIT_MESSAGE" value="IMPRESION DE LISTAS APTOS PRESTAMOS BETA" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

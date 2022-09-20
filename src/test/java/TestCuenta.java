@@ -1,9 +1,12 @@
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.programabanco.modelo.CajaAhorro;
+import com.programabanco.modelo.CuentaBancaria;
 import com.programabanco.modelo.CuentaCorriente;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 
 class MetodosCuentasTest {
 
@@ -15,9 +18,6 @@ class MetodosCuentasTest {
     CuentaCorriente cuentaCorriente2 = new CuentaCorriente(true, 2233L, "NEWHAVEN", 2000.0, 2000.0);
     CuentaCorriente cuentaCorriente3 = new CuentaCorriente(false, 5566L, "GROWDAY", 3000.0, 3000.0);
     CuentaCorriente cuentaCorriente4 = new CuentaCorriente(true, 8899L, "Arian", 4000.0, 4000.0);
-
-
-
 
 
 
@@ -292,9 +292,6 @@ class MetodosCuentasTest {
         assertEquals(2000.0, cajaAhorro1.getSaldo()); /** CHEQUEO EN CUENTA DE DESTINO */
         assertEquals(970.0, cuentaCorriente2.getSaldo ()); /** CHEQUEO EN CUENTA DE ORIGEN */
     }
-
-
-
 
 }
 
