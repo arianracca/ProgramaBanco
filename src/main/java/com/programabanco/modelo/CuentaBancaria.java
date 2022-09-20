@@ -160,10 +160,6 @@ public abstract class  CuentaBancaria {
     /** Metodo para ver si el saldo se adecua al prestamo */
     public abstract boolean saldoPrestamoSuficiente();
 
-    /** Metodo obtener los TITULARES en mayusculas */
-    public void titularMayusculas() {
-        System.out.println(); getTitular().toUpperCase();
-    }
 
 
 }

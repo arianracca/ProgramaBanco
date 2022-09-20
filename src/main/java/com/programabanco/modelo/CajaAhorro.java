@@ -24,5 +24,4 @@ public class CajaAhorro extends CuentaBancaria {
         }
         return saldoPrestamoSuficiente;
     }
-
 }

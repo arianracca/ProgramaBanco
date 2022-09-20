@@ -3,6 +3,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import com.programabanco.modelo.CajaAhorro;
 import com.programabanco.modelo.CuentaBancaria;
 import com.programabanco.modelo.CuentaCorriente;
+import com.programabanco.repositorio.Banco;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -21,8 +22,9 @@ class MetodosCuentasTest {
 
 
 
-    /** TESTS CON CAJAS DE AHORRO */
-    /** TESTS RETIRAR DINERO */
+    /** TESTS CON CAJAS DE AHORRO
+     * TESTS RETIRAR DINERO
+     */
     @Test
     @DisplayName("RETIRAR dinero de CAJA DE AHORRO - Monto menor a saldo")
     void test_retirar_dinero_caja_ahorro_monto_menor_a_saldo() {
@@ -107,8 +109,9 @@ class MetodosCuentasTest {
         assertEquals(1000.0, cajaAhorro1.getSaldo()); /** CHEQUEO EN CUENTA DE ORIGEN */
     }
 
-    /** TESTS CON CUENTAS CORRIENTES */
-    /** TESTS RETIRAR DINERO */
+    /** TESTS CON CUENTAS CORRIENTES
+     * TESTS RETIRAR DINERO
+     */
     @Test
     @DisplayName("RETIRAR dinero de CUENTA CORRIENTE - Monto menor a saldo")
     void test_retirar_dinero_cuenta_corriente_monto_menor_a_saldo() {
@@ -261,8 +264,9 @@ class MetodosCuentasTest {
         assertEquals(2000.0, cuentaCorriente2.getSaldo()); /** CHEQUEO EN CUENTA DE ORIGEN */
     }
 
-    /** TESTS TRANSFERIR ENTRE CUENTAS DE DISTINTO TIPO */
-    /** TESTS TRANSFERENCIAS DISTINTO TIPO DE CUENTA DE MISMO TITULAR */
+    /** TESTS TRANSFERIR ENTRE CUENTAS DE DISTINTO TIPO
+     * TESTS TRANSFERENCIAS DISTINTO TIPO DE CUENTA DE MISMO TITULAR
+     */
     @Test
     @DisplayName("TESTS TRANSFERENCIAS DE CAJA AHORRO A CUENTA CORRIENTE - MISMO TITULAR")
     void test_transferir_dinero_caja_ahorro_a_cuenta_corriente_mismo_titular() {
@@ -292,6 +296,8 @@ class MetodosCuentasTest {
         assertEquals(2000.0, cajaAhorro1.getSaldo()); /** CHEQUEO EN CUENTA DE DESTINO */
         assertEquals(970.0, cuentaCorriente2.getSaldo ()); /** CHEQUEO EN CUENTA DE ORIGEN */
     }
+
+
 
 }
 
