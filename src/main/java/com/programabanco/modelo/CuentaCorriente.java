@@ -1,14 +1,17 @@
 package com.programabanco.modelo;
 
-import lombok.Getter;
-import lombok.Setter;
-
 public class CuentaCorriente extends CuentaBancaria {
 
-    @Getter @Setter private Double descubiertoAsignado;
-    @Getter @Setter private Double saldoDescubierto = 0.0;
-    @Getter @Setter private Double descubiertoDisponible;
-    @Getter private final String tipoCuenta = "Cuenta Corriente";
+    /** El descubierto Asignado es el tope máximo que el Banco asigna a una cuenta para poder usarse en descubierto */
+    private Double descubiertoAsignado;
+
+    /** El descubierto Utilizado es monto que se ha consumido del tope máximo */
+    private Double descubiertoUtilizado = 0.0;
+
+    /** El Saldo Descubierto es el monto disponible para usarse en descubierto
+     * (saldoDescubierto = descubiertoAsignado - descubiertoUtilizado) */
+    private Double saldoDescubierto;
+    private final String tipoCuenta = "Cuenta Corriente";
 
 
     public CuentaCorriente(boolean habilitada, Long nroCuenta, String titular, Double saldo, Double descubiertoAsignado) {
@@ -17,111 +20,138 @@ public class CuentaCorriente extends CuentaBancaria {
         this.titular = titular;
         this.saldo = saldo;
         this.descubiertoAsignado = descubiertoAsignado;
-        this.descubiertoDisponible = descubiertoAsignado;
+        this.saldoDescubierto = descubiertoAsignado;
     }
 
-    public CuentaCorriente(boolean habilitada, Long nroCuenta, String titular, Double saldo, Double descubiertoAsignado, Double saldoDescubierto, Double descubiertoDisponible) {
-        this(habilitada, nroCuenta, titular, saldo, descubiertoAsignado);
-        this.saldoDescubierto = saldoDescubierto;
-        this.descubiertoDisponible = descubiertoDisponible;
-    }
-
-    @Override
-    public synchronized void retirar(Double monto) {
-        Double saldoTotal = getSaldo() + getDescubiertoDisponible();
-
-        /** Chequea si la cuenta está habilitada */
+    public synchronized boolean depositar(Double monto) {
         if (isHabilitada()) {
+            /** Chequea si el monto llega a cubrir el saldo en descubierto */
+            if (monto >= getDescubiertoUtilizado()) {
+                Double montoFinal = monto - getDescubiertoUtilizado();
+                setSaldo(getSaldo() + montoFinal);
+                setDescubiertoUtilizado(0.0);
+                setSaldoDescubierto(getDescubiertoAsignado() - getDescubiertoUtilizado()); /** Actualiza el descubierto disponible */
+                System.out.println("La " + getTipoCuenta() + ", Nº " + getNroCuenta() +
+                        "\nTitular: "  + getTitular() +
+                        "\nha recibido exitosamente $" + monto +
+                        "\n------------------------------------------------");
+                return true;
 
+            /** Opera el depósito cuando el monto no cubre el saldo en descubierto actual */
+            } else {
+                setDescubiertoUtilizado(getDescubiertoUtilizado() - monto);
+                setSaldoDescubierto(getDescubiertoAsignado() - getDescubiertoUtilizado()); /** Actualiza el descubierto disponible */
+                System.out.println("La " + getTipoCuenta() + ", Nº " + getNroCuenta() +
+                        "\nTitular: "  + getTitular() +
+                        "\nha recibido exitosamente $" + monto +
+                        "\n------------------------------------------------");
+                return true;
+            }
+
+        } else {
+            System.out.println("La cuenta no se encuentra habilitada." +
+                    "\n------------------------------------------------");
+            return false;
+        }
+    }
+
+    public synchronized boolean retirar(Double monto) {
+        Double saldoTotal = getSaldo() + getSaldoDescubierto();
+        if (isHabilitada()) {
          /**Chequea que el monto a retirar no supere el saldo disponible (Contando el saldo descubierto) */
             if (monto <= saldoTotal) {
 
                 /** Chequea si el saldo es suficiente para retirar el monto sin descubierto */
                 if (monto <= getSaldo()) {
                     setSaldo(getSaldo() - monto);
-                    System.out.println("Ha retirado exitosamente $" + monto +
+                    System.out.println("Se ha debitado exitosamente $" + monto +
                             "\nSu saldo actual es de $" + getSaldo() +
                             "\n------------------------------------------------");
+                    return true;
 
-                    /** Hace el retiro utilizando saldo en descubierto */
-                } else {
+                } else {    /** Hace el retiro utilizando saldo en descubierto */
                     Double montoDescubierto = monto - getSaldo(); /** Calcula el monto que excede el saldo para restar del descubierto asignado */
-                    setSaldoDescubierto(getSaldoDescubierto() + montoDescubierto);
+                    setDescubiertoUtilizado(getDescubiertoUtilizado() + montoDescubierto);
                     setSaldo(0.0);
-                    setDescubiertoDisponible(getDescubiertoAsignado() - getSaldoDescubierto()); /** Actualiza el descubierto disponible */
-                    System.out.println("Ha retirado exitosamente $" + monto + "" +
+                    setSaldoDescubierto(getDescubiertoAsignado() - getDescubiertoUtilizado()); /** Actualiza el descubierto disponible */
+                    System.out.println("Se ha debitado exitosamente $" + monto + "" +
                             "\nSu saldo actual es de $" + getSaldo() +
-                            "\nSe ha utilizado un monto en descubierto de $" + getSaldoDescubierto() +
-                            "\nTiene disponible de un saldo en descubierto de: $" + getDescubiertoDisponible() +
+                            "\nSe ha utilizado un monto en descubierto de $" + montoDescubierto +
+                            "\nTiene disponible un saldo en descubierto de: $" + getSaldoDescubierto() +
                             "\n------------------------------------------------");
+                    return true;
                 }
 
             /** No se puede retirar el monto por superar el saldo disponible y el monto descubierto asignado sumados */
             } else {
-                System.out.println("El monto que desea retirar es mayor al disponible" +
+                System.out.println("El monto que desea operar es mayor al disponible" +
                         "\nSu saldo actual es de $" + getSaldo() +
+                        "\nTiene disponible un saldo en descubierto de: $" + getSaldoDescubierto() +
                         "\n------------------------------------------------");
+                return false;
                 }
 
         /** La cuenta no está habilitada */
         } else{
-            System.out.println("Su cuenta no se encuentra habilitada." +
+            System.out.println("La cuenta no se encuentra habilitada." +
                         "\n------------------------------------------------");
+            return false;
         }
     }
 
-    @Override
-    public synchronized void depositar(Double monto) {
-        /** Chequea si la cuenta está habilitada */
-        if (isHabilitada()) {
-            /** Chequea si el monto llega a cubrir el saldo en descubierto */
-            if (monto >= getSaldoDescubierto()) {
-                Double montoFinal = monto - getSaldoDescubierto();
-                setSaldo(getSaldo() + montoFinal);
-                setSaldoDescubierto(0.0);
-                setDescubiertoDisponible(getDescubiertoAsignado() - getSaldoDescubierto()); /** Actualiza el descubierto disponible */
-                System.out.println("Ha depositado exitosamente $" + monto +
-                        "\nSu saldo actual es de $" + getSaldo() +
-                        "\nTiene disponible de un saldo en descubierto de: $" + getDescubiertoDisponible() +
-                        "\n------------------------------------------------");
 
-            /** Opera el depósito cuando el monto no cubre el saldo en descubierto actual */
-            } else {
-                setSaldoDescubierto(getSaldoDescubierto() - monto);
-                setDescubiertoDisponible(getDescubiertoAsignado() - getSaldoDescubierto()); /** Actualiza el descubierto disponible */
-                System.out.println("Ha depositado exitosamente $" + monto +
-                        "\nSu saldo actual es de $" + getSaldo() +
-                        "\nTiene disponible de un saldo en descubierto de: $" + getDescubiertoDisponible() +
-                        "\n------------------------------------------------");
-            }
-        /** La cuenta no se encuentra habilitada */
-        } else {
-            System.out.println("Su cuenta no se encuentra habilitada." +
-                    "\n------------------------------------------------");
-        }
-    }
-
-    @Override  /** Sobreescribe la impresión de escritura en texto de los datos del objeto instanciado para los datos propios de la clase CuentaCorriente */
+    @Override  /** Sobreescribe la impresión de escritura para los datos propios de la clase CuentaCorriente */
     public String toString() {
-        StringBuilder infoCuenta = new StringBuilder();
-        infoCuenta.append("\nNúmero de cuenta: " + getNroCuenta() +
+        return "\nNúmero de cuenta: " + getNroCuenta() +
                 "\nTipo de cuenta: " + getTipoCuenta() +
-                "\nTitular: " + getTitular()+
+                "\nTitular: " + getTitular() +
                 "\nEstado de habilitación: " + isHabilitada() +
                 "\nSaldo: " + getSaldo() +
-                "\nSaldo descubierto: " + getSaldoDescubierto()+
-                "\n------------------------------------------------");
-        return infoCuenta.toString();
+                "\nSaldo descubierto gastado: " + getDescubiertoUtilizado() +
+                "\nSaldo descubierto disponible: " + getSaldoDescubierto() +
+                "\n------------------------------------------------";
     }
 
-    @Override /** Metodo para ver si el saldo se adecua al prestamo */
+    /** Metodo para obtener en cada caso el saldo total, contando el saldo descubierto */
+    public Double saldoTotal() {
+        Double saldoTotal = getSaldo() + getSaldoDescubierto();
+        return saldoTotal;
+    }
+
+    /** Metodo para ver si el saldo se adecua al prestamo */
     public boolean saldoPrestamoSuficiente() {
         boolean saldoPrestamoSuficiente;
-        if (isHabilitada() && getSaldo() + getDescubiertoDisponible() >= 10000) {
-            saldoPrestamoSuficiente = true;
-        } else {
-            saldoPrestamoSuficiente = false;
-        }
+        saldoPrestamoSuficiente = isHabilitada() && saldoTotal() >= 10000.0;
         return saldoPrestamoSuficiente;
     }
+
+    /** Getters y Setters de la clase */
+    public Double getDescubiertoAsignado() {
+        return descubiertoAsignado;
+    }
+
+    public void setDescubiertoAsignado(Double descubiertoAsignado) {
+        this.descubiertoAsignado = descubiertoAsignado;
+    }
+
+    public Double getDescubiertoUtilizado() {
+        return descubiertoUtilizado;
+    }
+
+    public void setDescubiertoUtilizado(Double descubiertoUtilizado) {
+        this.descubiertoUtilizado = descubiertoUtilizado;
+    }
+
+    public Double getSaldoDescubierto() {
+        return saldoDescubierto;
+    }
+
+    public void setSaldoDescubierto(Double saldoDescubierto) {
+        this.saldoDescubierto = saldoDescubierto;
+    }
+
+    public String getTipoCuenta() {
+        return tipoCuenta;
+    }
+
 }

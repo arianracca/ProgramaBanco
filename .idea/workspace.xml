@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5752fc2e-28ff-464e-8c5c-3910e966e05c" name="Changes" comment="IMPRESION DE LISTAS APTOS PRESTAMOS BETA">
-      <change afterPath="$PROJECT_DIR$/src/test/java/MetodosBancoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="5752fc2e-28ff-464e-8c5c-3910e966e05c" name="Changes" comment="Programa Final Version 3.0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/programabanco/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programabanco/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CajaAhorro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CajaAhorro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CuentaBancaria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CuentaBancaria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CuentaCorriente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CuentaCorriente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/programabanco/repositorio/Banco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programabanco/repositorio/Banco.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MetodosBancoTest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TestCuenta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestCuenta.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,51 +65,52 @@
       <recent name="com.programabanco.modelo" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="MetodosCuentasTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.MetodosCuentasTest.impresion_lista_titulares_aptos_prestamo">
+    <configuration name="MetodosCuentasTest.impresion_lista_titulares_aptos_prestamo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProgramaBanco" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MetodosCuentasTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MetodosCuentasTest.test_transferir_dinero_caja_ahorro_a_cuenta_corriente_distinto_titular" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ProgramaBanco" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MetodosCuentasTest" />
-      <option name="METHOD_NAME" value="test_transferir_dinero_caja_ahorro_a_cuenta_corriente_distinto_titular" />
+      <option name="METHOD_NAME" value="impresion_lista_titulares_aptos_prestamo" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MetodosCuentasTest.test_transferir_dinero_caja_ahorro_a_cuenta_corriente_mismo_titular" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MetodosCuentasTest.test_banco_hackeable_con_caja_ahorro_con_riesgo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProgramaBanco" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MetodosCuentasTest" />
-      <option name="METHOD_NAME" value="test_transferir_dinero_caja_ahorro_a_cuenta_corriente_mismo_titular" />
+      <option name="METHOD_NAME" value="test_banco_hackeable_con_caja_ahorro_con_riesgo" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MetodosCuentasTest.test_transferir_dinero_cuenta_corriente_a_caja_ahorro_distinto_titular" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MetodosCuentasTest.test_banco_hackeable_cuenta_corriente_con_riesgo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProgramaBanco" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MetodosCuentasTest" />
-      <option name="METHOD_NAME" value="test_transferir_dinero_cuenta_corriente_a_caja_ahorro_distinto_titular" />
+      <option name="METHOD_NAME" value="test_banco_hackeable_cuenta_corriente_con_riesgo" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MetodosCuentasTest.test_transferir_dinero_cuenta_corriente_a_caja_ahorro_mismo_titular" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MetodosCuentasTest.test_banco_hackeable_cuenta_corriente_con_riesgo_contanto_saldo_descubierto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProgramaBanco" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MetodosCuentasTest" />
-      <option name="METHOD_NAME" value="test_transferir_dinero_cuenta_corriente_a_caja_ahorro_mismo_titular" />
+      <option name="METHOD_NAME" value="test_banco_hackeable_cuenta_corriente_con_riesgo_contanto_saldo_descubierto" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MetodosCuentasTest.test_banco_hackeable_sin_cuenta_con_riesgo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProgramaBanco" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MetodosCuentasTest" />
+      <option name="METHOD_NAME" value="test_banco_hackeable_sin_cuenta_con_riesgo" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -117,11 +118,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MetodosCuentasTest" />
-        <item itemvalue="JUnit.MetodosCuentasTest.test_transferir_dinero_caja_ahorro_a_cuenta_corriente_distinto_titular" />
-        <item itemvalue="JUnit.MetodosCuentasTest.test_transferir_dinero_cuenta_corriente_a_caja_ahorro_mismo_titular" />
-        <item itemvalue="JUnit.MetodosCuentasTest.test_transferir_dinero_cuenta_corriente_a_caja_ahorro_distinto_titular" />
-        <item itemvalue="JUnit.MetodosCuentasTest.test_transferir_dinero_caja_ahorro_a_cuenta_corriente_mismo_titular" />
+        <item itemvalue="JUnit.MetodosCuentasTest.impresion_lista_titulares_aptos_prestamo" />
+        <item itemvalue="JUnit.MetodosCuentasTest.test_banco_hackeable_sin_cuenta_con_riesgo" />
+        <item itemvalue="JUnit.MetodosCuentasTest.test_banco_hackeable_con_caja_ahorro_con_riesgo" />
+        <item itemvalue="JUnit.MetodosCuentasTest.test_banco_hackeable_cuenta_corriente_con_riesgo_contanto_saldo_descubierto" />
+        <item itemvalue="JUnit.MetodosCuentasTest.test_banco_hackeable_cuenta_corriente_con_riesgo" />
       </list>
     </recent_temporary>
   </component>
@@ -183,7 +184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663632725224</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="IMPRESION DE LISTAS APTOS PRESTAMOS BETA">
+      <created>1663643095049</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1663643095049</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -202,7 +210,8 @@
     <MESSAGE value="Segunda version. finalizada CuentaBancaria y CajaAhorro funcionando. Sobreescritura de metodos en CuentaBancaria" />
     <MESSAGE value="ARCHIVO DE TESTEO AÑADIDO CON TODOS LOS METODOS Y CASUISTICA." />
     <MESSAGE value="IMPRESION DE LISTAS APTOS PRESTAMOS BETA" />
-    <option name="LAST_COMMIT_MESSAGE" value="IMPRESION DE LISTAS APTOS PRESTAMOS BETA" />
+    <MESSAGE value="Programa Final Version 3.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Programa Final Version 3.0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
