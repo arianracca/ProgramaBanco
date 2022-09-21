@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5752fc2e-28ff-464e-8c5c-3910e966e05c" name="Changes" comment="Programa Final Version 3.0 Todos los testeos realizados">
+    <list default="true" id="5752fc2e-28ff-464e-8c5c-3910e966e05c" name="Changes" comment="Finalizados comentarios para Javadocs">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/programabanco/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programabanco/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CajaAhorro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CajaAhorro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CuentaBancaria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CuentaBancaria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CuentaCorriente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programabanco/modelo/CuentaCorriente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/programabanco/repositorio/Banco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/programabanco/repositorio/Banco.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TestCuenta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestCuenta.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,20 +43,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers": "true",
+    "last_opened_file_path": "D:/00.ARI/PROGRAMACION/zz.GitHub/JAVA/SPRINGBOOT/ProgramaBanco1",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -205,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663724110744</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Programa Final Version 3.0 Todos los testeos realizados">
+      <created>1663724573685</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1663724573685</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -226,7 +240,8 @@
     <MESSAGE value="IMPRESION DE LISTAS APTOS PRESTAMOS BETA" />
     <MESSAGE value="Programa Final Version 3.0" />
     <MESSAGE value="Programa Final Version 3.0 Todos los testeos realizados" />
-    <option name="LAST_COMMIT_MESSAGE" value="Programa Final Version 3.0 Todos los testeos realizados" />
+    <MESSAGE value="Finalizados comentarios para Javadocs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finalizados comentarios para Javadocs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

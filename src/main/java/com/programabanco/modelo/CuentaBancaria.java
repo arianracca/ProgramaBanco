@@ -1,9 +1,16 @@
 package com.programabanco.modelo;
 
-/** Clase Abstracta CuentaBancaria */
+/** Clase Abstracta CuentaBancaria
+ * Metodos de la clase abstracta:
+ * Los metodos de depositar, retirar y transferir retornan un valor boolean
+ * true si la operacion se realizo con éxito
+ * false si la operacion no ha podido realizarse.
+ * Si bien no se le da uso en este momento preveo que tiene utilidad en el futuro desarrollo de una aplicaicion
+ * de las caracteristicas solicitadas, generando chequeos de verificacion por transacciones.
+ * Se han generado Setters como el de Habilitación o Titular
+ * que si bien no tienen uso en el programa aun, pueden ser importantes para una implementacion futura.
+ * */
 public abstract class  CuentaBancaria {
-
-    /** Atributos de la clase abstracta */
 
     protected boolean habilitada;
     protected Long nroCuenta;
@@ -11,34 +18,30 @@ public abstract class  CuentaBancaria {
     protected Double saldo;
     protected String tipoCuenta;
 
-
-    /** Métodos de la clase abstracta
-     * Los métodos de depositar, retirar y transferir retornan un valor boolean
-     * true si la operacion se realizó con éxito
-     * false si la operación no ha podido realizarse.
-     * Si bien no se le da uso en este momento preveo que tiene utilidad en el futuro desarrollo de una aplicaición
-     * de las características solicitadas.
-     * Se han generado Setters como el de Habilitación o Titular
-     * que si bien no tienen uso en el programa aún, pueden ser importantes para una implementación
-     * futura.
-     * */
-
-    /** Método para depositar */
+    /** Metodo para depositar */
     public abstract boolean depositar(Double monto);
 
-    /** Métodoa para retirar */
+    /** Metodo para retirar */
     public abstract boolean retirar(Double monto);
 
-    /** Método para transferir general (se utiliza en ambas clases
-     * a partir de implementarse conjuntamente los métodos de  depositar y retirar
+    /** Metodo para transferir (se utiliza en ambas clases
+     * a partir de implementarse conjuntamente los metodos de depositar y retirar
      * que se ejecutan con diferencias dependiendo si el objeto
      * es instanciado como CuentaCorriente o CajaAhorro
+     *
+     * @param monto dinero que se quiere transferir a otra cuenta, se descontara
+     *              del saldo total de la cuenta (teniendo en cuenta el saldo descubierto disponible
+     *              en las cuentas corrientes).
+     * @param cuentaDestino cuenta a la que se le quiere enviar el monto.
+     * @return true si la operacion fue exitosa.
+     * false si la operacion no se pudo realizar por cualquier motivo.
      */
     public boolean transferir(Double monto, CuentaBancaria cuentaDestino) {
         Double cargoAdicional;
-        /** Corrobora que las cuentas sean de distinto tipo y titular */
-        if (!getClass().equals(cuentaDestino.getClass()) && !getTitular().equalsIgnoreCase(cuentaDestino.getTitular())) {
-            /** Calculo de cargoAdicional según la clase: CajaAhorro o CuentaCorriente */
+        // Corrobora que las cuentas sean de distinto tipo y titular
+        if (!getClass().equals(cuentaDestino.getClass())
+                && !getTitular().equalsIgnoreCase(cuentaDestino.getTitular())) {
+            // Calculo de cargoAdicional segun la clase: CajaAhorro o CuentaCorriente
             if (getClass().equals(CajaAhorro.class)) {
                 cargoAdicional = monto * 0.015;
             } else {
@@ -47,9 +50,9 @@ public abstract class  CuentaBancaria {
         } else {
             cargoAdicional = 0.0;
         }
-        /** Chequea habilitacion de cuentas y monto suficiente en cuenta de origen */
+        // Chequea habilitacion de cuentas y monto suficiente en cuenta de origen
         if (isHabilitada() && monto <= saldoTotal() + cargoAdicional && cuentaDestino.isHabilitada()) {
-            retirar((monto+ cargoAdicional));
+            retirar((monto + cargoAdicional));
             cuentaDestino.depositar(monto);
             System.out.println("Ha transferido exitosamente $" + monto +
                     "\nDesde su " + getTipoCuenta() + " Nº: " + getNroCuenta() +
@@ -66,7 +69,15 @@ public abstract class  CuentaBancaria {
         }
     }
 
-    /** Permite la impresion de escritura en texto de los datos del objeto instanciado */
+    /** Permite la impresion de escritura en texto de los datos del objeto instanciado
+     * @return los datos del objeto instanciado en formato cadena de caracteres.
+     * Los datos son:
+     * Numero de cuenta
+     * Tipo de cuenta
+     * Titular
+     * Estado de habilitacion
+     * Saldo
+     * */
     public String toString() {
         return "\nNúmero de cuenta: " + getNroCuenta() +
                 "\nTipo de cuenta: " + getTipoCuenta() +
@@ -76,14 +87,14 @@ public abstract class  CuentaBancaria {
                 "\n------------------------------------------------";
     }
 
-    /** Metodo para ver si el saldo se adecua al prestamo */
+    /** Metodo abstracto para ver si el saldo se adecua al prestamo */
     public abstract boolean saldoPrestamoSuficiente();
 
     /** Metodo para obtener en cada caso el saldo total, contando el saldo descubierto en cuentas corrientes */
     public abstract Double saldoTotal();
 
 
-    /** Getters y Setters de la clase */
+    // Getters y Setters de la clase
     public boolean isHabilitada() {
         return habilitada;
     }
@@ -95,7 +106,6 @@ public abstract class  CuentaBancaria {
     public Long getNroCuenta() {
         return nroCuenta;
     }
-
 
     public String getTitular() {
         return titular;
