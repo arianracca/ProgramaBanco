@@ -13,13 +13,13 @@ import java.util.ArrayList;
  * Se ejecutan todas las pruebas contempladas de la casuistica del ejercicio en esta clase.
  * Se pueden ejecutar individualmente y muestran que el programa funciona de la manera esperada.
  * En cada caso se imprime primero todos los datos completos de las cuentas o listas con las que
- * se va a estar trabajando en el test y posteriormente se reimprimen los valores afectados
+ * se va a estar trabajando en el test, posteriormente se reimprimen los valores afectados
  * por los métodos aplicados.
+ * Finalmente se vuelven a mostrar los datos completos para verificar las modificaciones
  *
  * @author Arian Racca
  *
  * */
-
 
 class MetodosCuentasTest {
 
@@ -43,6 +43,7 @@ class MetodosCuentasTest {
         System.out.println(cajaAhorro1);
         cajaAhorro1.retirar(100.0);
         assertEquals(900.0, cajaAhorro1.getSaldo());
+        System.out.println(cajaAhorro1);
     }
 
     @Test
@@ -51,6 +52,7 @@ class MetodosCuentasTest {
         System.out.println(cajaAhorro1);
         cajaAhorro1.retirar(1000.0);
         assertEquals(0.0, cajaAhorro1.getSaldo());
+        System.out.println(cajaAhorro1);
     }
 
     @Test
@@ -59,6 +61,7 @@ class MetodosCuentasTest {
         System.out.println(cajaAhorro1);
         cajaAhorro1.retirar(1100.0);
         assertEquals(1000.0, cajaAhorro1.getSaldo());
+        System.out.println(cajaAhorro1);
     }
 
     @Test
@@ -67,6 +70,7 @@ class MetodosCuentasTest {
         System.out.println(cajaAhorro3);
         cajaAhorro3.retirar(100.0);
         assertEquals(1000.0, cajaAhorro1.getSaldo());
+        System.out.println(cajaAhorro3);
     }
 
     /** TESTS DEPOSITAR DINERO */
@@ -76,6 +80,7 @@ class MetodosCuentasTest {
         System.out.println(cajaAhorro1);
         cajaAhorro1.depositar(1000.0);
         assertEquals(2000.0, cajaAhorro1.getSaldo());
+        System.out.println(cajaAhorro1);
     }
 
     @Test
@@ -84,6 +89,7 @@ class MetodosCuentasTest {
         System.out.println(cajaAhorro3);
         cajaAhorro3.depositar(1000.0);
         assertEquals(3000.0, cajaAhorro3.getSaldo());
+        System.out.println(cajaAhorro3);
     }
 
     /** TESTS TRANSFERIR DINERO */
@@ -95,6 +101,8 @@ class MetodosCuentasTest {
         cajaAhorro1.transferir(900.0, cajaAhorro2);
         assertEquals(2900.0, cajaAhorro2.getSaldo()); /** CHEQUEO EN CUENTA DE DESTINO */
         assertEquals(100.0, cajaAhorro1.getSaldo()); /** CHEQUEO EN CUENTA DE ORIGEN */
+        System.out.println(cajaAhorro1);
+        System.out.println(cajaAhorro2);
     }
 
     @Test
@@ -105,6 +113,8 @@ class MetodosCuentasTest {
         cajaAhorro1.transferir(1000.0, cajaAhorro2);
         assertEquals(3000.0, cajaAhorro2.getSaldo()); /** CHEQUEO EN CUENTA DE DESTINO */
         assertEquals(0.0, cajaAhorro1.getSaldo()); /** CHEQUEO EN CUENTA DE ORIGEN */
+        System.out.println(cajaAhorro1);
+        System.out.println(cajaAhorro2);
     }
 
     @Test
@@ -115,6 +125,8 @@ class MetodosCuentasTest {
         cajaAhorro1.transferir(3000.0, cajaAhorro2);
         assertEquals(2000.0, cajaAhorro2.getSaldo()); /** CHEQUEO EN CUENTA DE DESTINO */
         assertEquals(1000.0, cajaAhorro1.getSaldo()); /** CHEQUEO EN CUENTA DE ORIGEN */
+        System.out.println(cajaAhorro1);
+        System.out.println(cajaAhorro2);
     }
 
     @Test
@@ -125,6 +137,8 @@ class MetodosCuentasTest {
         cajaAhorro3.transferir(1000.0, cajaAhorro2);
         assertEquals(2000.0, cajaAhorro2.getSaldo()); /** CHEQUEO EN CUENTA DE DESTINO */
         assertEquals(3000.0, cajaAhorro3.getSaldo()); /** CHEQUEO EN CUENTA DE ORIGEN */
+        System.out.println(cajaAhorro2);
+        System.out.println(cajaAhorro3);
     }
 
     @Test
@@ -135,6 +149,8 @@ class MetodosCuentasTest {
         cajaAhorro1.transferir(500.0, cajaAhorro3);
         assertEquals(3000.0, cajaAhorro3.getSaldo()); /** CHEQUEO EN CUENTA DE DESTINO */
         assertEquals(1000.0, cajaAhorro1.getSaldo()); /** CHEQUEO EN CUENTA DE ORIGEN */
+        System.out.println(cajaAhorro1);
+        System.out.println(cajaAhorro3);
     }
 
     /** TESTS CON CUENTAS CORRIENTES
@@ -146,6 +162,7 @@ class MetodosCuentasTest {
         System.out.println(cuentaCorriente1);
         cuentaCorriente1.retirar(100.0);
         assertEquals(900.0, cuentaCorriente1.getSaldo());
+        System.out.println(cuentaCorriente1);
     }
 
     @Test
@@ -154,6 +171,7 @@ class MetodosCuentasTest {
         System.out.println(cuentaCorriente1);
         cuentaCorriente1.retirar(1000.0);
         assertEquals(0.0, cuentaCorriente1.getSaldo());
+        System.out.println(cuentaCorriente1);
     }
 
     /** TESTS RETIRAR DINERO EN RELACION CON SALDOS DESCUBIERTOS */
@@ -163,6 +181,7 @@ class MetodosCuentasTest {
         System.out.println(cuentaCorriente1);
         cuentaCorriente1.retirar(1500.0);
         assertEquals(1000.0, cuentaCorriente1.getSaldo());
+        System.out.println(cuentaCorriente1);
     }
 
     @Test
@@ -173,6 +192,7 @@ class MetodosCuentasTest {
         assertEquals(0.0, cuentaCorriente2.getSaldo()); /** CHEQUEO SALDO */
         assertEquals(500.0, cuentaCorriente2.getDescubiertoUtilizado()); /** CHEQUEO SALDO DESCUBIERTO */
         assertEquals(1500.0, cuentaCorriente2.getSaldoDescubierto()); /** CHEQUEO DESCUBIERTO DISPONIBLE */
+        System.out.println(cuentaCorriente2);
     }
 
     @Test
@@ -183,6 +203,7 @@ class MetodosCuentasTest {
         assertEquals(0.0, cuentaCorriente2.getSaldo()); /** CHEQUEO SALDO */
         assertEquals(2000.0, cuentaCorriente2.getDescubiertoUtilizado()); /** CHEQUEO SALDO DESCUBIERTO */
         assertEquals(0.0, cuentaCorriente2.getSaldoDescubierto()); /** CHEQUEO DESCUBIERTO DISPONIBLE */
+        System.out.println(cuentaCorriente2);
     }
 
     @Test
@@ -193,6 +214,7 @@ class MetodosCuentasTest {
         assertEquals(2000.0, cuentaCorriente2.getSaldo()); /** CHEQUEO SALDO */
         assertEquals(0.0, cuentaCorriente2.getDescubiertoUtilizado()); /** CHEQUEO SALDO DESCUBIERTO */
         assertEquals(2000.0, cuentaCorriente2.getSaldoDescubierto()); /** CHEQUEO DESCUBIERTO DISPONIBLE */
+        System.out.println(cuentaCorriente2);
     }
 
     @Test
@@ -202,6 +224,7 @@ class MetodosCuentasTest {
         cuentaCorriente3.retirar(500.0);
         assertEquals(3000.0, cuentaCorriente3.getSaldo()); /** CHEQUEO SALDO */
         assertEquals(3000.0, cuentaCorriente3.getSaldoDescubierto()); /** CHEQUEO DESCUBIERTO DISPONIBLE */
+        System.out.println(cuentaCorriente3);
     }
 
     /** TEST DEPOSITAR DINERO */
@@ -211,6 +234,7 @@ class MetodosCuentasTest {
         System.out.println(cuentaCorriente1);
         cuentaCorriente1.depositar(500.0);
         assertEquals(1500.0, cuentaCorriente1.getSaldo()); /** CHEQUEO SALDO */
+        System.out.println(cuentaCorriente1);
     }
 
     @Test
@@ -219,6 +243,7 @@ class MetodosCuentasTest {
         System.out.println(cuentaCorriente3);
         cuentaCorriente3.depositar(500.0);
         assertEquals(3000.0, cuentaCorriente3.getSaldo()); /** CHEQUEO SALDO */
+        System.out.println(cuentaCorriente3);
     }
 
     /** TEST DEPOSITAR DINERO CON SALDOS DESCUBIERTOS */
@@ -233,6 +258,7 @@ class MetodosCuentasTest {
         cuentaCorriente2.depositar(3000.0);
         assertEquals(2000.0, cuentaCorriente2.getSaldo()); /** CHEQUEO SALDO */
         assertEquals(0.0, cuentaCorriente2.getDescubiertoUtilizado()); /** CHEQUEO SALDO DESCUBIERTO */
+        System.out.println(cuentaCorriente2);
     }
 
     @Test
@@ -247,6 +273,7 @@ class MetodosCuentasTest {
         assertEquals(0.0, cuentaCorriente2.getSaldo()); /** CHEQUEO SALDO */
         assertEquals(500.0, cuentaCorriente2.getDescubiertoUtilizado()); /** CHEQUEO SALDO DESCUBIERTO */
         assertEquals(1500.0, cuentaCorriente2.getSaldoDescubierto()); /** CHEQUEO DESCUBIERTO DISPONIBLE */
+        System.out.println(cuentaCorriente2);
     }
 
     @Test
@@ -261,6 +288,7 @@ class MetodosCuentasTest {
         assertEquals(0.0, cuentaCorriente2.getSaldo()); /** CHEQUEO SALDO */
         assertEquals(0.0, cuentaCorriente2.getDescubiertoUtilizado()); /** CHEQUEO SALDO DESCUBIERTO */
         assertEquals(2000.0, cuentaCorriente2.getSaldoDescubierto()); /** CHEQUEO DESCUBIERTO DISPONIBLE */
+        System.out.println(cuentaCorriente2);
     }
 
     /** TEST TRANSFERENCIAS EN CUENTAS CORRIENTES */
@@ -272,6 +300,8 @@ class MetodosCuentasTest {
         cuentaCorriente1.transferir(900.0, cuentaCorriente2);
         assertEquals(2900.0, cuentaCorriente2.getSaldo()); /** CHEQUEO EN CUENTA DE DESTINO */
         assertEquals(100.0, cuentaCorriente1.getSaldo()); /** CHEQUEO EN CUENTA DE ORIGEN */
+        System.out.println(cuentaCorriente1);
+        System.out.println(cuentaCorriente2);
     }
     @Test
     @DisplayName("TRANSFERIR dinero de CUENTA CORRIENTE a CUENTA CORRIENTE - AMBAS HABILITADAS - MONTO IGUAL A SALDO")
@@ -281,6 +311,8 @@ class MetodosCuentasTest {
         cuentaCorriente1.transferir(1000.0, cuentaCorriente2);
         assertEquals(3000.0, cuentaCorriente2.getSaldo()); /** CHEQUEO EN CUENTA DE DESTINO */
         assertEquals(0.0, cuentaCorriente1.getSaldo()); /** CHEQUEO EN CUENTA DE ORIGEN */
+        System.out.println(cuentaCorriente1);
+        System.out.println(cuentaCorriente2);
     }
 
     @Test
@@ -291,6 +323,8 @@ class MetodosCuentasTest {
         cuentaCorriente1.transferir(2000.0, cuentaCorriente2);
         assertEquals(2000.0, cuentaCorriente2.getSaldo()); /** CHEQUEO EN CUENTA DE DESTINO */
         assertEquals(1000.0, cuentaCorriente1.getSaldo()); /** CHEQUEO EN CUENTA DE ORIGEN */
+        System.out.println(cuentaCorriente1);
+        System.out.println(cuentaCorriente2);
     }
 
     @Test
@@ -301,6 +335,8 @@ class MetodosCuentasTest {
         cuentaCorriente3.transferir(900.0, cuentaCorriente2);
         assertEquals(2000.0, cuentaCorriente2.getSaldo()); /** CHEQUEO EN CUENTA DE DESTINO */
         assertEquals(3000.0, cuentaCorriente3.getSaldo()); /** CHEQUEO EN CUENTA DE ORIGEN */
+        System.out.println(cuentaCorriente3);
+        System.out.println(cuentaCorriente2);
     }
 
     @Test
@@ -311,6 +347,8 @@ class MetodosCuentasTest {
         cuentaCorriente2.transferir(900.0, cuentaCorriente3);
         assertEquals(3000.0, cuentaCorriente3.getSaldo()); /** CHEQUEO EN CUENTA DE DESTINO */
         assertEquals(2000.0, cuentaCorriente2.getSaldo()); /** CHEQUEO EN CUENTA DE ORIGEN */
+        System.out.println(cuentaCorriente2);
+        System.out.println(cuentaCorriente3);
     }
 
     @Test
@@ -322,6 +360,8 @@ class MetodosCuentasTest {
         cuentaCorriente1.transferir(1000.0, cuentaCorriente2);
         assertEquals(500.0, cuentaCorriente2.getSaldo()); /** CHEQUEO EN CUENTA DE DESTINO */
         assertEquals(0.0, cuentaCorriente1.getSaldo()); /** CHEQUEO EN CUENTA DE ORIGEN */
+        System.out.println(cuentaCorriente1);
+        System.out.println(cuentaCorriente2);
     }
 
     @Test
@@ -335,6 +375,8 @@ class MetodosCuentasTest {
         assertEquals(1800.0, cuentaCorriente2.getSaldoDescubierto()); /** CHEQUEO DESCUBIERTO DISPONIBLE EN CUENTA DE DESTINO */
         assertEquals(200.0, cuentaCorriente2.getDescubiertoUtilizado()); /** CHEQUEO DESCUBIERTO UTILIZADO */
         assertEquals(700.0, cuentaCorriente1.getSaldo()); /** CHEQUEO EN CUENTA DE ORIGEN */
+        System.out.println(cuentaCorriente1);
+        System.out.println(cuentaCorriente2);
     }
 
     /** TESTS TRANSFERIR ENTRE CUENTAS DE DISTINTO TIPO
@@ -348,6 +390,8 @@ class MetodosCuentasTest {
         cajaAhorro1.transferir(900.0, cuentaCorriente4);
         assertEquals(4900.0, cuentaCorriente4.getSaldo()); /** CHEQUEO EN CUENTA DE DESTINO */
         assertEquals(100.0, cajaAhorro1.getSaldo()); /** CHEQUEO EN CUENTA DE ORIGEN */
+        System.out.println(cajaAhorro1);
+        System.out.println(cuentaCorriente1);
     }
     @Test
     @DisplayName("TESTS TRANSFERENCIAS DE CUENTA CORRIENTE A CAJA AHORRO - MISMO TITULAR")
@@ -357,6 +401,8 @@ class MetodosCuentasTest {
         cuentaCorriente4.transferir(1000.0, cajaAhorro1);
         assertEquals(2000.0, cajaAhorro1.getSaldo()); /** CHEQUEO EN CUENTA DE DESTINO */
         assertEquals(3000.0, cuentaCorriente4.getSaldo ()); /** CHEQUEO EN CUENTA DE ORIGEN */
+        System.out.println(cuentaCorriente4);
+        System.out.println(cajaAhorro1);
     }
     /** TESTS TRANSFERENCIAS DISTINTO TIPO DE CUENTA Y DISTINTOS TITULARES */
     @Test
@@ -367,6 +413,8 @@ class MetodosCuentasTest {
         cajaAhorro1.transferir(900.0, cuentaCorriente2);
         assertEquals(2900.0, cuentaCorriente2.getSaldo()); /** CHEQUEO EN CUENTA DE DESTINO */
         assertEquals(86.5, cajaAhorro1.getSaldo ()); /** CHEQUEO EN CUENTA DE ORIGEN */
+        System.out.println(cajaAhorro1);
+        System.out.println(cuentaCorriente2);
     }
     @Test
     @DisplayName("TESTS TRANSFERENCIAS DE CUENTA CORRIENTE A CAJA AHORRO - DISTINTO TITULAR")
@@ -376,11 +424,12 @@ class MetodosCuentasTest {
         cuentaCorriente2.transferir(1000.0, cajaAhorro1);
         assertEquals(2000.0, cajaAhorro1.getSaldo()); /** CHEQUEO EN CUENTA DE DESTINO */
         assertEquals(970.0, cuentaCorriente2.getSaldo ()); /** CHEQUEO EN CUENTA DE ORIGEN */
+        System.out.println(cuentaCorriente2);
+        System.out.println(cajaAhorro1);
     }
 
 
     /** TESTS DE MÉTODOS DE BANCO
-     *
      * TEST DE POSIBILIDADES DE HACKEO
      * */
 
