@@ -1,7 +1,7 @@
 package com.programabanco.modelo;
 
 public class CajaAhorro extends CuentaBancaria {
-    public Double saldo;
+    private Double saldo;
     private final String tipoCuenta = "Caja de Ahorro";
 
     public CajaAhorro(boolean habilitada, Long nroCuenta, String titular, Double saldo) {
