@@ -2,6 +2,10 @@ package com.programabanco.modelo;
 
 public class CuentaCorriente extends CuentaBancaria {
 
+    /** Para implementar la lógica del saldo descubierto se ha tratado
+     * de ser lo más fiel al uso bancario real.
+     * */
+
     /** El descubierto Asignado es el tope máximo que el Banco asigna a una cuenta para poder usarse en descubierto */
     private Double descubiertoAsignado;
 
@@ -20,7 +24,8 @@ public class CuentaCorriente extends CuentaBancaria {
         this.titular = titular;
         this.saldo = saldo;
         this.descubiertoAsignado = descubiertoAsignado;
-        this.saldoDescubierto = descubiertoAsignado;
+        this.saldoDescubierto = descubiertoAsignado;    /** EL SALDO DESCUBIERTO SE INICIA CON EL VALOR DEL TOPE MÁXIMO
+                                                            Y SE ACTUALIZA CON LAS TRANSACCIONES */
     }
 
     public synchronized boolean depositar(Double monto) {
@@ -37,8 +42,8 @@ public class CuentaCorriente extends CuentaBancaria {
                         "\n------------------------------------------------");
                 return true;
 
-            /** Opera el depósito cuando el monto no cubre el saldo en descubierto actual */
-            } else {
+
+            } else {   /** Opera el depósito cuando el monto no cubre el saldo en descubierto actual */
                 setDescubiertoUtilizado(getDescubiertoUtilizado() - monto);
                 setSaldoDescubierto(getDescubiertoAsignado() - getDescubiertoUtilizado()); /** Actualiza el descubierto disponible */
                 System.out.println("La " + getTipoCuenta() + ", Nº " + getNroCuenta() +
@@ -82,8 +87,8 @@ public class CuentaCorriente extends CuentaBancaria {
                     return true;
                 }
 
-            /** No se puede retirar el monto por superar el saldo disponible y el monto descubierto asignado sumados */
-            } else {
+
+            } else {  /** No se puede retirar el monto por superar el saldo disponible y el monto descubierto disponible sumados */
                 System.out.println("El monto que desea operar es mayor al disponible" +
                         "\nSu saldo actual es de $" + getSaldo() +
                         "\nTiene disponible un saldo en descubierto de: $" + getSaldoDescubierto() +
@@ -91,7 +96,7 @@ public class CuentaCorriente extends CuentaBancaria {
                 return false;
                 }
 
-        /** La cuenta no está habilitada */
+
         } else{
             System.out.println("La cuenta no se encuentra habilitada." +
                         "\n------------------------------------------------");
@@ -107,12 +112,13 @@ public class CuentaCorriente extends CuentaBancaria {
                 "\nTitular: " + getTitular() +
                 "\nEstado de habilitación: " + isHabilitada() +
                 "\nSaldo: " + getSaldo() +
+                "\nSaldo descubierto máximo permitido: " + getDescubiertoAsignado() +
                 "\nSaldo descubierto gastado: " + getDescubiertoUtilizado() +
                 "\nSaldo descubierto disponible: " + getSaldoDescubierto() +
                 "\n------------------------------------------------";
     }
 
-    /** Metodo para obtener en cada caso el saldo total, contando el saldo descubierto */
+    /** Metodo para obtener en cada caso el saldo total, contando el saldo descubierto disponible */
     public Double saldoTotal() {
         Double saldoTotal = getSaldo() + getSaldoDescubierto();
         return saldoTotal;
@@ -153,5 +159,4 @@ public class CuentaCorriente extends CuentaBancaria {
     public String getTipoCuenta() {
         return tipoCuenta;
     }
-
 }

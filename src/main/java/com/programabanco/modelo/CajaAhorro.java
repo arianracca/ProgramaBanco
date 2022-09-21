@@ -2,6 +2,7 @@ package com.programabanco.modelo;
 
 public class CajaAhorro extends CuentaBancaria {
     private Double saldo;
+
     private final String tipoCuenta = "Caja de Ahorro";
 
     public CajaAhorro(boolean habilitada, Long nroCuenta, String titular, Double saldo) {
@@ -11,9 +12,7 @@ public class CajaAhorro extends CuentaBancaria {
         this.saldo = saldo;
     }
 
-    /**
-     * Métodoa para depositar
-     */
+    /** Método para depositar */
        public synchronized boolean depositar(Double monto) {
         if (isHabilitada()) {
             setSaldo(getSaldo() + monto);
@@ -65,16 +64,16 @@ public class CajaAhorro extends CuentaBancaria {
     }
 
     /** Getters y setters de la clase */
-    public String getTipoCuenta() {
-        return tipoCuenta;
-    }
-
     public Double getSaldo() {
         return saldo;
     }
 
     public void setSaldo(Double saldo) {
         this.saldo = saldo;
+    }
+
+    public String getTipoCuenta() {
+        return tipoCuenta;
     }
 }
 

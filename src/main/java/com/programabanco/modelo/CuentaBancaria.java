@@ -12,15 +12,28 @@ public abstract class  CuentaBancaria {
     protected String tipoCuenta;
 
 
-    /** Métodos de la clase abstracta */
+    /** Métodos de la clase abstracta
+     * Los métodos de depositar, retirar y transferir retornan un valor boolean
+     * true si la operacion se realizó con éxito
+     * false si la operación no ha podido realizarse.
+     * Si bien no se le da uso en este momento preveo que tiene utilidad en el futuro desarrollo de una aplicaición
+     * de las características solicitadas.
+     * Se han generado Setters como el de Habilitación o Titular
+     * que si bien no tienen uso en el programa aún, pueden ser importantes para una implementación
+     * futura.
+     * */
 
-    /** Método para depositar  */
+    /** Método para depositar */
     public abstract boolean depositar(Double monto);
 
     /** Métodoa para retirar */
     public abstract boolean retirar(Double monto);
 
-    /** Método para transferir */
+    /** Método para transferir general (se utiliza en ambas clases
+     * a partir de implementarse conjuntamente los métodos de  depositar y retirar
+     * que se ejecutan con diferencias dependiendo si el objeto
+     * es instanciado como CuentaCorriente o CajaAhorro
+     */
     public boolean transferir(Double monto, CuentaBancaria cuentaDestino) {
         Double cargoAdicional;
         /** Corrobora que las cuentas sean de distinto tipo y titular */
@@ -52,7 +65,6 @@ public abstract class  CuentaBancaria {
             return false;
         }
     }
-
 
     /** Permite la impresion de escritura en texto de los datos del objeto instanciado */
     public String toString() {
