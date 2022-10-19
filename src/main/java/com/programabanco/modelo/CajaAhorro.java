@@ -21,9 +21,9 @@ public class CajaAhorro extends CuentaBancaria {
 
     /** Metodo para depositar
      * @param monto dinero que se quiere a depositar en la cuenta.
-     *
      * @return true si la operacion fue exitosa.
      * false si la operacion no se pudo realizar por cualquier motivo.
+     * @see CuentaCorriente#depositar(Double)
      * */
        public synchronized boolean depositar(Double monto) {
         if (isHabilitada()) {
@@ -42,6 +42,7 @@ public class CajaAhorro extends CuentaBancaria {
 
     /** Metodoa para retirar
      * @param monto dinero que se quiere retirar de la cuenta
+     * @see CuentaCorriente#retirar(Double)
      * */
     public synchronized boolean retirar(Double monto) {
         if (isHabilitada()) {
@@ -64,20 +65,11 @@ public class CajaAhorro extends CuentaBancaria {
         }
     }
 
-    /** Metodo para ver si el saldo se adecua al prestamo
-     * @return true si la cuenta esta habilitada y el saldo es mayor o igual a 10000.0
-     * false si la cuenta esta inhabilitada o su saldo es menor a 10000.0
-     * */
-    public boolean saldoPrestamoSuficiente() {
-        boolean saldoPrestamoSuficiente;
-        saldoPrestamoSuficiente = isHabilitada() && getSaldo() >= 10000.0;
-        return saldoPrestamoSuficiente;
-    }
-
     /** Metodo para obtener en cada caso el saldo total
      * @return saldoTotal monto de saldo disponible en la cuenta
      * Se crea para poder operar en cuenta corriente su equivalente con saldo descubierto disponible
      * y abstraer la diferencia para simplificar su aplicacion y chequeo en metodos como retiro y transferencia.
+     * @see CuentaCorriente#saldoTotal()
      * */
     public Double saldoTotal() {
         Double saldoTotal = getSaldo();

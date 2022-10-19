@@ -1,9 +1,11 @@
-package com.programabanco.repositorio;
+package com.programabanco.control;
 
+import com.programabanco.modelo.CajaAhorro;
 import com.programabanco.modelo.CuentaBancaria;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 /**Clase Banco
  * Aqui se han generado los metodos de elavuacion y chequeo a nivel banco.
  * Filtrado de listas de cuentas según criterios:
@@ -13,12 +15,16 @@ import java.util.stream.Collectors;
 public class Banco {
 
     /** Metodo para obtener los Titulares que cumplen con los requisitos para obtener un prestamo
+     * (Cuenta habilitada y con saldo mayor o igual a 10000.0 contando saldo descubierto disponible cuando corresponda)
      * @param cuentasBancarias una lista de cuentas bancarias que van a ser filtradas con los requisitos del préstamo
      * Imprime lista de titulares aptos.
+     * @see CuentaBancaria#saldoTotal()
+     * @see CajaAhorro#saldoTotal()
      * */
     public synchronized void obtenerTitularesAptosParaPrestamo(List<CuentaBancaria> cuentasBancarias) {
         List<CuentaBancaria> cuentasBancariasAptasParaPrestamo = cuentasBancarias.stream()
-                .filter(CuentaBancaria::saldoPrestamoSuficiente)    // Filtra las cuentas con saldo suficiente
+                .filter(cuentaBancaria -> cuentaBancaria.saldoTotal() >= 10000.0    // Filtra las cuentas con saldo suficiente
+                && cuentaBancaria.isHabilitada())                          // contando el descubierto disponible y habilitadas
                 .collect(Collectors.toList());
 
         // Imprime lista de titulares con letras en Mayúsculas
@@ -27,8 +33,8 @@ public class Banco {
     }
 
     /** Metodo a ejecutar para ver si existen cuentas hackeables
-     * @param cuentasBancarias una lista de cuentas bancarias que se filtran con las condiciones de riesgo
-     *                         (Nº cuenta par, Titular con más de 15 caracteres, saldo total mayor a 50000.0)
+     * (Nº cuenta par, Titular con más de 15 caracteres, saldo total mayor a 50000.0)
+     * @param cuentasBancarias una lista de cuentas bancarias que se filtran con las condiciones de riesgo.
      * @return true si hay riesgo de hackeo en el sistema (si al menos una cuenta cumple las condiciones de riesgo)
      * false si no se encontraron cuentas bancarias con dichas caracteristicas.
      * */

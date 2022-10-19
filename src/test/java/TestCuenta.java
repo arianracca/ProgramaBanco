@@ -1,15 +1,16 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.programabanco.control.Banco;
 import com.programabanco.modelo.CajaAhorro;
 import com.programabanco.modelo.CuentaBancaria;
 import com.programabanco.modelo.CuentaCorriente;
-import com.programabanco.repositorio.Banco;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-/** TESTS
+/** TESTS -->
  * Se ejecutan todas las pruebas contempladas de la casuistica del ejercicio en esta clase.
  * Se generaron una serie de cuentas bancarias de ejemplo para poder generar el testeo de los
  * metodos. En el caso de los metodos de chequeo del banco se generaron distintas listas para
@@ -430,10 +431,10 @@ class MetodosCuentasTest {
     }
 
 
-    /* TESTS DE MÉTODOS DE BANCO
-     * TEST DE POSIBILIDADES DE HACKEO
+    /* TESTS DE MÉTODOS DE BANCO */
+    /** TEST DE POSIBILIDADES DE HACKEO
+     * @see Banco#algunaCuentaPuedeSerHackeda(java.util.List)
      * */
-
     @Test
     @DisplayName("TEST DE BANCO HACKEABLE - CUENTA CORRIENTE CON RIESGO")
     void test_banco_hackeable_cuenta_corriente_con_riesgo() {
@@ -532,7 +533,8 @@ class MetodosCuentasTest {
         assertFalse(banco.algunaCuentaPuedeSerHackeda(listaCuentas1));
     }
 
-    /* IMPRESION DE LISTA DE TITULARES APTOS PARA PRESTAMO
+    /** IMPRESION DE LISTA DE TITULARES APTOS PARA PRESTAMO
+     * @see Banco#obtenerTitularesAptosParaPrestamo(java.util.List)
      * */
     @Test
     @DisplayName("IMPRESION DE LISTA DE TITULARES APTOS PARA PRESTAMO")
@@ -543,7 +545,7 @@ class MetodosCuentasTest {
 
         CuentaCorriente cuentaCorriente10 = new CuentaCorriente(true, 1122L, "Lord Viden", 1000.0, 10000.0);
         CuentaCorriente cuentaCorriente20 = new CuentaCorriente(false, 2233L, "Irene Haven", 50000.0, 5000.0);
-        CuentaCorriente cuentaCorriente30 = new CuentaCorriente(true, 2263L, "Katherine Zeta Johanesburg", 15000.0, 5000.0);
+        CuentaCorriente cuentaCorriente30 = new CuentaCorriente(true, 2263L, "Katherine Zeta Johanesburg", 15000.0, 0.0);
 
         ArrayList<CuentaBancaria> listaCuentas1 = new ArrayList<>();
         listaCuentas1.add(cajaAhorro10);

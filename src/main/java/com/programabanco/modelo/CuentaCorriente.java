@@ -1,6 +1,7 @@
 package com.programabanco.modelo;
 
 /** Clase Cuenta Corriente
+ * -->
  * Para implementar la lógica del saldo descubierto se ha tratado
  * de ser lo más fiel al uso bancario real.
  * */
@@ -31,15 +32,15 @@ public class CuentaCorriente extends CuentaBancaria {
         this.titular = titular;
         this.saldo = saldo;
         this.descubiertoAsignado = descubiertoAsignado;
-        this.saldoDescubierto = descubiertoAsignado;    // EL SALDO DESCUBIERTO SE INICIA CON EL VALOR DEL TOPE MÁXIMO
+        this.saldoDescubierto = descubiertoAsignado;    // EL SALDO DESCUBIERTO SE INICIA CON EL VALOR DEL TOPE MAXIMO
                                                            // Y SE ACTUALIZA CON LAS TRANSACCIONES
     }
 
     /** Metodo para depositar
      * @param monto dinero que se quiere a depositar en la cuenta.
-     *
      * @return true si la operación fue exitosa.
      * false si la operacion no se pudo realizar por cualquier motivo.
+     * @see CajaAhorro#depositar(Double)
      * */
     public synchronized boolean depositar(Double monto) {
         if (isHabilitada()) {
@@ -70,9 +71,9 @@ public class CuentaCorriente extends CuentaBancaria {
     /** Metodo para retirar
      * @param monto dinero que se quiere retirar de la cuenta (puede exceder al saldo
      *              si hay un monto descubierto asignado para hacerlo).
-     *
      * @return true si la operacion fue exitosa.
      * false si la operacion no se pudo realizar por cualquier motivo.
+     * @see CajaAhorro#retirar(Double)
      * */
     public synchronized boolean retirar(Double monto) {
         Double saldoTotal = getSaldo() + getSaldoDescubierto();
@@ -123,6 +124,7 @@ public class CuentaCorriente extends CuentaBancaria {
      * Saldo descubierto maximo permitido
      * Saldo descubierto gastado
      * Saldo descubierto disponible
+     * @see CuentaBancaria#toString()
      * */
     @Override
     public String toString() {
@@ -139,22 +141,12 @@ public class CuentaCorriente extends CuentaBancaria {
 
     /** Metodo para obtener en cada caso el saldo total
      * @return saldoTotal saldo en cuenta al que se suma el saldo descubierto disponible
-     *
      * Se crea para poder abstraer y simplificar su aplicacion y chequeo en metodos como retiro y transferencia.
+     * @see CajaAhorro#saldoTotal()
      */
     public Double saldoTotal() {
         Double saldoTotal = getSaldo() + getSaldoDescubierto();
         return saldoTotal;
-    }
-
-    /** Metodo para ver si el saldo se adecua al prestamo
-     * @return true si la cuenta esta habilitada y su saldo es mayor o igual a 10000.0
-     * false si la cuenta esta inhabilitada o su saldo es menor a 10000.0
-     * */
-    public boolean saldoPrestamoSuficiente() {
-        boolean saldoPrestamoSuficiente;
-        saldoPrestamoSuficiente = isHabilitada() && saldoTotal() >= 10000.0;
-        return saldoPrestamoSuficiente;
     }
 
     // Getters y Setters de la clase

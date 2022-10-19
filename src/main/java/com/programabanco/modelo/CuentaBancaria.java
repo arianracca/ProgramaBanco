@@ -1,6 +1,7 @@
 package com.programabanco.modelo;
 
 /** Clase Abstracta CuentaBancaria
+ * -->
  * Metodos de la clase abstracta:
  * Los metodos de depositar, retirar y transferir retornan un valor boolean
  * true si la operacion se realizo con éxito
@@ -18,10 +19,16 @@ public abstract class  CuentaBancaria {
     protected Double saldo;
     protected String tipoCuenta;
 
-    /** Metodo para depositar */
+    /** Metodo para depositar
+     * @see CajaAhorro#depositar(Double)
+     * @see CuentaCorriente#depositar(Double)
+     * */
     public abstract boolean depositar(Double monto);
 
-    /** Metodo para retirar */
+    /** Metodo para retirar
+     * @see CajaAhorro#retirar(Double)
+     * @see CuentaCorriente#retirar(Double)
+     * */
     public abstract boolean retirar(Double monto);
 
     /** Metodo para transferir (se utiliza en ambas clases
@@ -35,6 +42,8 @@ public abstract class  CuentaBancaria {
      * @param cuentaDestino cuenta a la que se le quiere enviar el monto.
      * @return true si la operacion fue exitosa.
      * false si la operacion no se pudo realizar por cualquier motivo.
+     * @see CuentaBancaria#depositar(Double)
+     * @see CuentaBancaria#retirar(Double)
      */
     public boolean transferir(Double monto, CuentaBancaria cuentaDestino) {
         Double cargoAdicional;
@@ -77,6 +86,7 @@ public abstract class  CuentaBancaria {
      * Titular
      * Estado de habilitacion
      * Saldo
+     * @see CuentaCorriente#toString()
      * */
     public String toString() {
         return "\nNúmero de cuenta: " + getNroCuenta() +
@@ -87,10 +97,10 @@ public abstract class  CuentaBancaria {
                 "\n------------------------------------------------";
     }
 
-    /** Metodo abstracto para ver si el saldo se adecua al prestamo */
-    public abstract boolean saldoPrestamoSuficiente();
-
-    /** Metodo para obtener en cada caso el saldo total, contando el saldo descubierto en cuentas corrientes */
+    /** Metodo para obtener en cada caso el saldo total, contando el saldo descubierto en cuentas corrientes
+     * @see CajaAhorro#saldoTotal()
+     * @see CuentaCorriente#saldoTotal()
+     * */
     public abstract Double saldoTotal();
 
 
